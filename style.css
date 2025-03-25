@@ -1,0 +1,125 @@
+@import url("https://use.fontawesome.com/releases/v6.4.2/css/all.css");
+@import url("https://fonts.googleapis.com/css?family=Poppins");
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #222327;
+    margin: 0;
+}
+
+.icon, .text {
+    color: #222327;
+}
+
+.navigation {
+    position: relative;
+    width: 400px;
+    height: 70px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    font-family: "Poppins", sans-serif;
+}
+
+ul {
+    display: flex;
+    width: 350px;
+    padding: 0;
+}
+
+li {
+    position: relative;
+    list-style: none;
+    width: 70px;
+    height: 70px;
+    z-index: 1;
+}
+
+li a {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100;
+    text-align: center;
+    font-weight: 500;
+}
+
+a .icon {
+    position: relative;
+    display: block;
+    line-height: 75px;
+    font-size: 1.5em;
+    text-align: center;
+    transition: all 0.5s ease;
+}
+
+li.active a .icon {
+    transform: translateY(-35px);
+    transition: transform 0.5s ease;
+}
+
+.text {
+    position: absolute;
+    font-weight: 400;
+    font-size: 0.75em;
+    letter-spacing: 0.05em;
+    transition: 0.5s;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+li.active a .text {
+    opacity: 1;
+    transform: translateY(10px);
+}
+
+.indicator {
+    position: absolute;
+    top: -50%;
+    width: 70px;
+    height: 70px;
+    background: tomato;
+    box-sizing: border-box;
+    border-radius: 50%;
+    border: 6px solid #222327;
+    transition: 0.5s;
+}
+
+.indicator::before,
+.indicator::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+}
+
+.indicator::before {
+    left: -22px;
+    border-top-right-radius: 20px;
+    box-shadow: 1px -10px 0 0 #222327;
+}
+
+.indicator::after {
+    right: -22px;
+    border-top-left-radius: 20px;
+    box-shadow: -1px -10px 0 0 #222327;
+}
+
+li.active~.indicator {
+    --x: 0;
+    transform: translateX(var(--x));
+}
+
+li:nth-child(2).active~.indicator { --x: 70px; }
+li:nth-child(3).active~.indicator { --x: 140px; }
+li:nth-child(4).active~.indicator { --x: 210px; }
+li:nth-child(5).active~.indicator { --x: 280px; }
